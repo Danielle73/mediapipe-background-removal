@@ -2,8 +2,8 @@
 
 import { useRef, useEffect } from "react";
 //import { SelfieSegmentation } from "@mediapipe/selfie_segmentation";
-import * as mpSelfieSegmentation from "@mediapipe/selfie_segmentation";
-import { Camera } from "@mediapipe/camera_utils";
+// import { SelfieSegmentation } from "@mediapipe/selfie_segmentation";
+// import { Camera } from "@mediapipe/camera_utils";
 
 export default function CameraBackgroundRemover() {
   const videoRef = useRef(null);
@@ -12,7 +12,7 @@ export default function CameraBackgroundRemover() {
   useEffect(() => {
     if (!videoRef.current || !canvasRef.current) return;
 
-    const selfieSegmentation = new mpSelfieSegmentation.SelfieSegmentation({
+    const selfieSegmentation = new window.SelfieSegmentation({
       locateFile: (file) =>
         `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`,
     });
@@ -32,7 +32,7 @@ export default function CameraBackgroundRemover() {
       ctx.drawImage(results.image, 0, 0, canvas.width, canvas.height);
     });
 
-    const camera = new Camera(videoRef.current, {
+    const camera = new window.Camera(videoRef.current, {
       onFrame: async () => {
         await selfieSegmentation.send({ image: videoRef.current });
       },
@@ -43,6 +43,7 @@ export default function CameraBackgroundRemover() {
 
     return () => {
       camera.stop();
+      selfieSegmentation.close();
     };
   }, []);
 
