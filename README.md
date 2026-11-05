@@ -2,6 +2,17 @@
 
 A collection of two background removal applications built using Google's MediaPipe Selfie Segmentation. Each application explores a different approach to removing backgrounds from visual media.
 
+## Deployment
+
+Both applications are deployed separately using Vercel from this monorepo.
+
+| Application | Root Directory | Framework | Live URL |
+|---|---|---|---|
+| Live Background Remover | `live-background-remover` | Next.js | [View Live App](https://mediapipe-background-remover.vercel.app/) |
+| Photo Background Remover | `photo-background-remover` | Vite | [View Live App](https://mediapipe-background-removal.vercel.app/) |
+
+Each application has its own Vercel project and deployment configuration.
+
 ## Applications
 
 ### 1. Live Background Remover
