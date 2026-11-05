@@ -1,11 +1,11 @@
-import React from 'react';
-import './App.css';
-import BackgroundRemover from './BackgroundRemover';
+import React from "react";
+import "./App.css";
+import BackgroundRemover from "./BackgroundRemover";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>Fashion App - Background Remover</h1>
+      <h1>Background Remover</h1>
       <BackgroundRemover />
     </div>
   );
